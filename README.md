@@ -5,7 +5,9 @@ Escrever um módulo para o núcleo do Linux e descrever passo a passo os método
 
 [writing-a-simple-linux-kernel-module](https://blog.sourcerer.io/writing-a-simple-linux-kernel-module-d9dc3762c234)
 
-# Para testar o codigo:
+# Para testar o codigo
+
+Para testar o módulo, execute os seguintes comandos:
 
     sudo insmod lkm_example.ko
 
@@ -15,6 +17,12 @@ E para remover o modulo:
 
     sudo rmmod lkm_example
 
-Comando para ver a mensagem no console:
+Use este comando para verificar as mensagens do núcleo, incluindo "Hello, World!" e "Goodbye, World!":
 
     sudo dmesg
+
+# Outras funcoes do Makefile
+
+    test
+
+Após executar o make, você pode usar o comando make test para automatizar o processo de teste, evitando a repetição dos comandos acima.
