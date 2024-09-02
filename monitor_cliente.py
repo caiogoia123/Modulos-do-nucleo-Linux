@@ -48,5 +48,5 @@ async def monitor_directory(directory):
         observer.join()
 
 if __name__ == "__main__":
-    directory_to_monitor = "/caminho/para/diretorio"
+    directory_to_monitor = "~/Desktop/FACULDADE/BCC-5-SEMESTRE/SO/Modulos-do-nucleo-Linux"
     asyncio.run(monitor_directory(directory_to_monitor))
