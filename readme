@@ -1,0 +1,74 @@
+# Projeto de Monitoramento de Diretório com WebSocket
+
+Este projeto implementa um sistema de monitoramento de diretórios usando WebSocket. O cliente monitora mudanças em um 
+diretório específico e envia informações sobre essas mudanças para um servidor WebSocket. O servidor, por sua vez, exibe as mensagens recebidas no console.
+
+# Descrição
+
+O projeto é dividido em dois componentes principais:
+
+1.Servidor WebSocket: Implementado em Python, este servidor escuta na porta 8765 e exibe as mensagens recebidas no console.
+
+2.Cliente de Monitoramento: Também implementado em Python, este cliente usa a biblioteca watchdog para monitorar um diretório 
+e envia eventos de mudança para o servidor WebSocket.
+
+# Funcionalidades
+
+1.Servidor WebSocket:
+
+Escuta conexões WebSocket na porta 8765.
+Exibe mensagens recebidas no console.
+
+2.Cliente de Monitoramento:
+
+Monitora um diretório específico em busca de alterações (criação, modificação e exclusão de arquivos).
+Envia eventos de alteração para o servidor WebSocket.
+
+# Requisitos
+
+Para executar este projeto, você precisará das seguintes dependências:
+
+Python 3.x
+
+Bibliotecas Python:
+websockets
+watchdog
+
+    pip install websockets watchdog
+
+# Configuração
+
+1.Configuração do Servidor:
+
+O servidor WebSocket escuta na porta 8765 e está configurado para aceitar conexões de localhost. Se precisar 
+ajustar o IP ou a porta, edite o arquivo servidor.py.
+
+2.Configuração do Cliente:
+
+- O cliente WebSocket está configurado para conectar ao servidor na URI ws://192.168.0.103:8765. Certifique-se de que 
+este endereço IP corresponda ao IP do servidor. Se necessário, ajuste o IP no arquivo monitor_cliente.py.
+
+- Defina o diretório a ser monitorado no cliente. Altere a variável directory_to_monitor no arquivo monitor_cliente.py 
+para o caminho desejado.
+
+# Uso
+
+1.Inicie o servidor WebSocket:
+
+    python servidor.py
+
+2.Inicie o cliente de monitoramento:
+
+    python monitor_cliente.py
+
+3.Teste o sistema:
+
+Crie, modifique ou exclua arquivos no diretório monitorado e observe o cliente e o servidor registrando essas mudanças.
+
+# Exemplos
+
+- Criação de um arquivo: novo_arquivo.txt será detectado e uma mensagem será enviada ao servidor.
+
+- Exclusão de um arquivo: arquivo_excluido.txt será detectado e uma mensagem será enviada ao servidor.
+
+- Modificação de um arquivo: arquivo_modificado.txt será detectado e uma mensagem será enviada ao servidor.
