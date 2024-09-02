@@ -1,7 +1,3 @@
-
-
-# O script abaixo utiliza a biblioteca watchdog para monitorar um diretório e websockets para enviar eventos de mudança para um servidor.
-
 import asyncio
 import websockets
 import os
@@ -48,5 +44,11 @@ async def monitor_directory(directory):
         observer.join()
 
 if __name__ == "__main__":
-    directory_to_monitor = "~/Desktop/FACULDADE/BCC-5-SEMESTRE/SO/Modulos-do-nucleo-Linux"
-    asyncio.run(monitor_directory(directory_to_monitor))
+    # Expande o caminho ~ para o caminho completo do diretório home
+    directory_to_monitor = os.path.expanduser("~/Desktop/FACULDADE/BCC-5-SEMESTRE/SO/Modulos-do-nucleo-Linux")
+    
+    # Verifique se o diretório existe antes de iniciar a monitorização
+    if not os.path.exists(directory_to_monitor):
+        print(f"Diretório não encontrado: {directory_to_monitor}")
+    else:
+        asyncio.run(monitor_directory(directory_to_monitor))
