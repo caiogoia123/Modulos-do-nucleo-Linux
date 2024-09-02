@@ -1,40 +1,41 @@
 # Projeto de Monitoramento de Diretório com WebSocket
 
-Este projeto implementa um sistema de monitoramento de diretórios usando WebSocket. O cliente monitora mudanças em um 
-diretório específico e envia informações sobre essas mudanças para um servidor WebSocket. O servidor, por sua vez, exibe as mensagens recebidas no console.
+Este projeto implementa um sistema de monitoramento de diretórios usando WebSocket. O cliente monitora mudanças em um diretório específico e envia informações sobre essas mudanças para um servidor WebSocket. O servidor, por sua vez, exibe as mensagens recebidas no console.
 
-# Descrição
+## Descrição
 
 O projeto é dividido em dois componentes principais:
 
-1.Servidor WebSocket: Implementado em Python, este servidor escuta na porta 8765 e exibe as mensagens recebidas no console.
+1. **Servidor WebSocket**: Implementado em Python, este servidor escuta na porta 8765 e exibe as mensagens recebidas no console.
 
-2.Cliente de Monitoramento: Também implementado em Python, este cliente usa a biblioteca watchdog para monitorar um diretório 
-e envia eventos de mudança para o servidor WebSocket.
+2. **Cliente de Monitoramento**: Também implementado em Python, este cliente usa a biblioteca `watchdog` para monitorar um diretório e envia eventos de mudança para o servidor WebSocket.
 
-# Funcionalidades
+## Funcionalidades
 
-1.Servidor WebSocket:
+### Servidor WebSocket
 
-Escuta conexões WebSocket na porta 8765.
-Exibe mensagens recebidas no console.
+- Escuta conexões WebSocket na porta 8765.
+- Exibe mensagens recebidas no console.
 
-2.Cliente de Monitoramento:
+### Cliente de Monitoramento
 
-Monitora um diretório específico em busca de alterações (criação, modificação e exclusão de arquivos).
-Envia eventos de alteração para o servidor WebSocket.
+- Monitora um diretório específico em busca de alterações (criação, modificação e exclusão de arquivos).
+- Envia eventos de alteração para o servidor WebSocket.
 
-# Requisitos
+## Requisitos
 
 Para executar este projeto, você precisará das seguintes dependências:
 
-Python 3.x
+- Python 3.x
+- Bibliotecas Python:
+  - `websockets`
+  - `watchdog`
 
-Bibliotecas Python:
-websockets
-watchdog
+Instale as dependências usando o seguinte comando:
 
-    pip install websockets watchdog
+```sh
+pip install websockets watchdog
+
 
 # Configuração
 
