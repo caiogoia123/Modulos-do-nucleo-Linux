@@ -11,21 +11,22 @@ SERVER_URI = "ws://192.168.0.103:8765"
 class DirectoryMonitor(FileSystemEventHandler):
     def __init__(self, websocket):
         self.websocket = websocket
-
-    async def on_modified(self, event):
-        await self.send_event(event)
-
-    async def on_created(self, event):
-        await self.send_event(event)
-
-    async def on_deleted(self, event):
-        await self.send_event(event)
+        self.loop = asyncio.get_event_loop()
 
     async def send_event(self, event):
         if event.is_directory:
             return
         message = f"Evento: {event.event_type} - Arquivo: {event.src_path}"
         await self.websocket.send(message)
+
+    def on_modified(self, event):
+        self.loop.create_task(self.send_event(event))
+
+    def on_created(self, event):
+        self.loop.create_task(self.send_event(event))
+
+    def on_deleted(self, event):
+        self.loop.create_task(self.send_event(event))
 
 # Função principal para monitorar o diretório e conectar ao servidor
 async def monitor_directory(directory):
@@ -44,11 +45,8 @@ async def monitor_directory(directory):
         observer.join()
 
 if __name__ == "__main__":
-    # Expande o caminho ~ para o caminho completo do diretório home
     directory_to_monitor = os.path.expanduser("~/Desktop/FACULDADE/BCC-5-SEMESTRE/SO/Modulos-do-nucleo-Linux")
-    
-    # Verifique se o diretório existe antes de iniciar a monitorização
-    if not os.path.exists(directory_to_monitor):
-        print(f"Diretório não encontrado: {directory_to_monitor}")
-    else:
-        asyncio.run(monitor_directory(directory_to_monitor))
+    asyncio.run(monitor_directory(directory_to_monitor))
+
+
+
