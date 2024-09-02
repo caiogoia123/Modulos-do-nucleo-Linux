@@ -8,9 +8,10 @@ async def server(websocket, path):
         print(f"Recebido: {message}")
 
 async def main():
-    async with websockets.serve(server, "localhost", 8765):
-        print("Servidor WebSocket iniciado em ws://localhost:8765")
+    async with websockets.serve(server, "0.0.0.0", 8765):
+        print("Servidor WebSocket iniciado em ws://0.0.0.0:8765")
         await asyncio.Future()  # Mantém o servidor rodando
 
 if __name__ == "__main__":
     asyncio.run(main())
+
