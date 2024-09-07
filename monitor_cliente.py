@@ -6,7 +6,7 @@ from watchdog.events import FileSystemEventHandler
 
 # Configurações do servidor WebSocket
 # Coloque o seu IPv4 no lugar do localhost para funcionar !
-SERVER_URI = "ws://localhost:8765"
+SERVER_URI = "ws://192.168.0.103:8765"
 
 # Classe para lidar com eventos de mudança no diretório
 class DirectoryMonitor(FileSystemEventHandler):
